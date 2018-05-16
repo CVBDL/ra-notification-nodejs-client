@@ -2,7 +2,7 @@
 
 ## Usage
 
-```nodejs
+```node
 const raNotificationClient = require('ra-notification-nodejs-client');
 
 const mail = {
