@@ -1,5 +1,9 @@
 # Ra Notification NodeJS Client
 
+## Prerequisites
+
+- NodeJS v6.0.0+
+
 ## Usage
 
 ```node
