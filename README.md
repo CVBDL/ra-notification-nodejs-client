@@ -4,7 +4,7 @@
 
 - NodeJS v6.0.0+
 
-## Usage
+## Basic Usage
 
 ```js
 const raNotificationClient = require('ra-notification-nodejs-client');
@@ -28,8 +28,21 @@ raNotificationClient
   .catch(err => {
     console.log('Failure: ', err);
   });
+```
 
-// send email with HTML template as body
+## Send HTML formatted email
+
+```js
+const raNotificationClient = require('ra-notification-nodejs-client');
+
+const mail = {
+  From: "no-reply@example.com",
+  To: ["example@example.com"],
+  Cc: [],
+  Bcc: [],
+  Subject: "RaNotification Released!"
+};
+
 raNotificationClient
   .sendHtmlEmail(mail, 'C:\\email-template.html')
   .then(() => {
@@ -47,4 +60,32 @@ raNotificationClient
   <li>Hello</li>
   <li>World</li>
 </ul>
+```
+
+## Email with attachments
+
+```js
+const raNotificationClient = require('ra-notification-nodejs-client');
+
+const mail = {
+  From: "no-reply@example.com",
+  To: ["example@example.com"],
+  Cc: [],
+  Bcc: [],
+  Subject: "RaNotification Released!",
+  Body: "Hi all, we're pleased to announce that RaNotification is released.",
+  IsHtml:  false
+};
+
+// send basic email
+raNotificationClient
+  .addAttachment('a.txt', 'C:\\a.txt')
+  .addAttachment('note.txt', 'C:\\b.txt')
+  .sendEmail(mail)
+  .then(() => {
+    console.log('Success');
+  })
+  .catch(err => {
+    console.log('Failure: ', err);
+  });
 ```
